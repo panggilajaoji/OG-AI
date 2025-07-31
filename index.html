@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Guessing Game</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 10px 20px; margin: 10px; font-size: 16px; }
+  </style>
+</head>
+<body>
+
+<h1>AI: Aku akan menebak yang kamu pikirkan!</h1>
+<p id="question">Pikirkan satu hewan... Aku akan mulai menanya!</p>
+
+<button onclick="answer('yes')">Ya</button>
+<button onclick="answer('no')">Tidak</button>
+
+<script>
+const questions = [
+  { text: "Apakah itu hewan yang bisa terbang?", yes: 1, no: 2 },
+  { text: "Apakah itu burung?", yes: "Aku menebak: Burung!", no: "Aku menebak: Kelelawar!" },
+  { text: "Apakah itu hewan berkaki empat?", yes: 3, no: 4 },
+  { text: "Apakah itu kucing?", yes: "Aku menebak: Kucing!", no: "Aku menebak: Anjing!" },
+  { text: "Apakah itu ular?", yes: "Aku menebak: Ular!", no: "Aku menebak: Aku menyerah..." }
+];
+
+let current = 0;
+
+function answer(choice) {
+  const step = questions[current];
+  const next = step[choice];
+
+  if (typeof next === "string") {
+    document.getElementById('question').innerText = next;
+  } else {
+    current = next;
+    document.getElementById('question').innerText = questions[current].text;
+  }
+}
+</script>
+
+</body>
+</html>
